@@ -19,7 +19,7 @@ const Banner = () => {
           </li>
           <li>
             <Link
-              to="/"
+              to="/blog/addBlog"
               className="bg-secondary/10 hover:text-secondary hover:underline underline-offset-4 rounded-full py-1 px-2.5"
             >
               Add Blog
