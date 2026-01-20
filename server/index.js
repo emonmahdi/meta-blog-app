@@ -2,8 +2,15 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
 const mongoose = require("mongoose");
+const blogRoutes = require("./src/routes/blog.routes");
 
 require("dotenv").config();
+
+// middleware
+app.use(express.json());
+
+//Use Routes
+app.use("/blogs", blogRoutes);
 
 async function ConnectDB() {
   try {

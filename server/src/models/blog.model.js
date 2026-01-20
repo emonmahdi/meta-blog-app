@@ -17,11 +17,11 @@ const blogSchema = new mongoose.Schema(
     description: { type: String, required: true },
     image: { type: String, required: true },
     author: { type: authSchema, required: true },
-    date: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: Date.now },
   },
-  {
-    timestamps: true,
-  },
+  // {
+  //   timestamps: true,
+  // },
 );
 
 const Blog = mongoose.model("Blog", blogSchema);
