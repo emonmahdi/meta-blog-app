@@ -1,24 +1,58 @@
 import React from "react";
+import axios from "axios";
 
 import authorImg from "../../assets/authors/author-1.png";
 import blogImg from "../../assets/blogs/blog-1.png";
+import { useParams } from "react-router";
+import { useState } from "react";
+import { useEffect } from "react";
+import Loading from "../../components/Loading";
 
 const BlogDetails = () => {
+  const { id } = useParams();
+  const [blog, setBlog] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  console.log(id);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/blogs/${id}`);
+        console.log(response.data.data);
+        setBlog(response.data.data);
+        setIsLoading(false);
+      } catch (err) {
+        console.log("Fetch error", err);
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+    window.scrollTo(0, 0);
+  }, [id]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className="container max-w-7xl mx-auto px-4 py-8">
       <div>
-        <h2 className="text-3xl font-bold mb-4">
-          Understanding the Most Important React Context API
-        </h2>
+        <h2 className="text-3xl font-bold mb-4">{blog?.title}</h2>
         <div className="flex items-center mb-4">
-          <img src={authorImg} alt="" className="w-10 h-10 rounded-full mr-3" />
+          <img
+            src={blog?.author?.image}
+            alt=""
+            className="w-10 h-10 rounded-full mr-3"
+          />
           <div>
-            <p className="text-lg font-medium">Tracey Wilson</p>
-            <p className="text-gray-500">9/1/2024</p>
+            <p className="text-lg font-medium">{blog?.author?.name}</p>
+            <p className="text-gray-500">
+              {new Date(blog?.createdAt).toLocaleDateString()}{" "}
+            </p>
           </div>
         </div>
         <img
-          src={blogImg}
+          src={blog?.image}
           alt=""
           className="w-full md:h-[580px] rounded-md object-cover mb-4"
         />
