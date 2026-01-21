@@ -57,11 +57,7 @@ const BlogDetails = () => {
           className="w-full md:h-[580px] rounded-md object-cover mb-4"
         />
         <div className="space-y-4">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci
-            facere numquam odit asperiores, aliquam corrupti a dolores veniam,
-            ut ipsum nam est ullam tempore itaque ex possimus nisi neque quasi.
-          </p>
+          <p>{blog.description}</p>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab rem
             porro numquam laborum? Itaque beatae odio officia pariatur, labore,

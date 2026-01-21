@@ -2,15 +2,17 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import InputField from "./InputField";
 import TextAreaField from "./TextAreaField";
+import axios from "axios";
 
 const AddBlog = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const blogData = {
       title: data.title,
       description: data.description,
@@ -21,6 +23,22 @@ const AddBlog = () => {
       },
     };
     console.log(blogData);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/blogs/add-blog",
+        blogData,
+      );
+      if (response.status === 200) {
+        // alert
+        alert("Blog added successfully");
+        reset();
+      }
+
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
