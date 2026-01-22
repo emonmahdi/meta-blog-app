@@ -1,14 +1,28 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { Link } from "react-router";
 import bgImg from "../../assets/blogs/blog-0.png";
 import authorImg from "../../assets/author.png";
+import { motion } from "motion/react";
 
 const Banner = () => {
   return (
     <div className="my-16">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-semibold">Meta Blog</h1>
-        <ul className="flex flex-wrap items-center justify-center gap-4 mt-4">
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-semibold"
+        >
+          Meta Blog
+        </motion.h1>
+        <motion.ul
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-wrap items-center justify-center gap-4 mt-4"
+        >
           <li>
             <Link
               to="/"
@@ -33,9 +47,14 @@ const Banner = () => {
               Manage Blog Blog
             </Link>
           </li>
-        </ul>
+        </motion.ul>
       </div>
-      <div className="text-white">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="text-white"
+      >
         <div
           className="md:min-h-[450px h-80 w-full bg-center bg-cover bg-no-repeat rounded-md"
           style={{ backgroundImage: `url(${bgImg})` }}
@@ -59,7 +78,7 @@ const Banner = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
