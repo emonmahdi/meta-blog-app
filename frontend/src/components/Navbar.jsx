@@ -1,9 +1,10 @@
 import { NavLink } from "react-router";
 import Search from "./Search";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
+import { ThemeContext } from "../context/ThemeContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,8 +12,10 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
+
+  // const [isDarkMode, setIsDarkMode] = useState(false);
+  // const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
 
   return (
     <div className="bg-white shadow-md">
@@ -71,13 +74,15 @@ const Navbar = () => {
         <div className="md:flex hidden items-center space-x-4">
           <Search />
           <div
-            className={`w-14 h-8 flex items-center bg-[#E8E8EA] rounded-full p-1 cursor-pointer transition-colors duration-300 ${isDarkMode ? "justify-end" : "justify-start"}`}
+            className={`w-14 h-8 flex items-center bg-[#E8E8EA] rounded-full p-1 cursor-pointer transition-colors duration-300 ${
+              darkMode ? "justify-end" : "justify-start"
+            }`}
           >
             <button
-              onClick={toggleDarkMode}
+              onClick={() => setDarkMode(!darkMode)}
               className="w-6 h-6 rounded-full shadow-md flex justify-center items-center transition-transform duration-300 cursor-pointer"
             >
-              {isDarkMode ? (
+              {darkMode ? (
                 <FaMoon className="text-gray-500" />
               ) : (
                 <FaSun className="text-yellow-500" />

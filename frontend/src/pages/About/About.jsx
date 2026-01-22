@@ -4,7 +4,7 @@ import NewsLetter from "../Home/NewsLetter";
 const About = () => {
   return (
     <section className="pt-28 pb-5">
-      <div className="container max-w-7xl px-4 mx-auto text-primary">
+      <div className="container max-w-7xl px-4 mx-auto">
         {/* hero */}
         <div className="text-center mb-20">
           <h1 className="text-4xl font-semibold">About Us</h1>
@@ -75,7 +75,7 @@ const About = () => {
             Meet Our Team
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center hover:scale-95 transition-all duration-200 cursor-pointer">
+            <div className="bg-white dark:bg-gray-800 dark:text-white p-6 rounded-lg shadow-lg text-center hover:scale-95 transition-all duration-200 cursor-pointer">
               <img
                 src="https://images.unsplash.com/photo-1521566652839-697aa473761a?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt=""

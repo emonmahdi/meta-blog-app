@@ -5,3 +5,7 @@
   --color-secondary:#4B6BFB;
   --color-accent:#E8E8EA
 } 
+
+.dark{
+  @apply bg-gray-900 text-white
+}
