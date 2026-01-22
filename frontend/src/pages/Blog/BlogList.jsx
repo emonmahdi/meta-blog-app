@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
+import { BlogContext } from "../../context/BlogContext";
 
 const BlogList = () => {
-  const [searchTerm] = useState("");
+  const { searchTerm } = useContext(BlogContext);
   const [blogs, setBlogs] = useState([]);
   const [showBlogs, setShowBlogs] = useState(6);
 
@@ -18,7 +19,7 @@ const BlogList = () => {
     (blog) =>
       blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       blog.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      blog.author.name.toLowerCase().includes(searchTerm.toLowerCase()),
+      blog.author.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleMoreBlogs = () => {
